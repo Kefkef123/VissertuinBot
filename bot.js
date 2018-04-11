@@ -44,7 +44,7 @@ client.on('message', msg => {
 
   if(msg.channel.type !== 'dm') {
 
-    if(msg.content === '!ranglijst') {
+    if(msg.content === settings.commandPrefix + 'ranglijst') {
       db.all("SELECT * FROM punten ORDER BY punten DESC", function(err, rows) {
         console.log(rows);
 
@@ -63,7 +63,7 @@ client.on('message', msg => {
       return;
     }
 
-    if(msg.content === '!punten') {
+    if(msg.content === settings.commandPrefix + 'punten') {
       db.get("SELECT COUNT(*) as count FROM punten WHERE userID = ?", [msg.author.id], function(err, row) {
         if(row['count'] === 0) {
           db.run("INSERT INTO punten (userID, punten) VALUES (?, 0)", [msg.author.id]);
@@ -87,7 +87,7 @@ client.on('message', msg => {
 
     let arguments = msg.content.split(' ');
 
-    if(arguments[0] === '!punten') {
+    if(arguments[0] === settings.commandPrefix + 'punten') {
       let query = '';
 
       if(arguments[1] === '+'){

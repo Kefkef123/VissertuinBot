@@ -1,4 +1,5 @@
 {
   "token": "YOURTOKENHERE",
-  "simon": "USERIDHERE"
+  "simon": "USERIDHERE",
+  "commandPrefix": "!"
 }
